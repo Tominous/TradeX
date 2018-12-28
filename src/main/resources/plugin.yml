@@ -1,0 +1,41 @@
+name: TradeX
+version: 1.0 BETA
+main: nl.tabuu.tradex.TradeX
+description: Easy and simple trade plugin.
+author: Tabuu
+authors: [Tabuu]
+website: https://www.tabuu.nl
+depend: [TabuuCore]
+api-version: 1.13
+
+commands:
+  trade:
+    usage: /trade <player>
+    description: Send a trade request to the player.
+    permission: tradex.trade.start
+  trade accept:
+    usage: /trade accept [player]
+    description: Accepts a player's request to trade.
+    permission: tradex.trade.accept
+  trade deny:
+    usage: /trade deny [player]
+    description: Denies a player's request to trade.
+    permission: tradex.trade.deny
+  trade cancel:
+    usage: /trade cancel
+    description: Cancels your outgoing trade request.
+    permission: tradex.trade.cancel
+
+permissions:
+  tradex.trade.start:
+    description: Allows users to start a trade with another player.
+    default: true
+  tradex.trade.accept:
+    description: Allows users to accept a trade with another player.
+    default: true
+  tradex.trade.deny:
+    description: Allows users to deny a trade with another player.
+    default: true
+  tradex.trade.cancel:
+    description: Allows users to cancel a trade request they send.
+    default: true

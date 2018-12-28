@@ -1,0 +1,15 @@
+# DESCRIPTION:  The amount of time before a trade request times out.
+# FORMAT:       TabuuCore time format.
+# NOTE:         Enter a value of 0 (e.g. '0s', '0m', '0h', etc) for no time-out.
+RequestTimeOut: "1m 30s"
+
+# DESCRIPTION:  The radius two players have to be in to trade with one another.
+# FORMAT:       Double.
+# NOTE:         Enter a negative value for no radius (e.g. -1).
+#               Enabling this feature will disable cross world/server trading.
+MaximumTradeDistance: 5.3
+
+# DESCRIPTION:  If set to false a player cannot accept a trade that would not fit in their inventory.
+# FORMAT:       Boolean.
+# NOTE:         When set to true the non fitting items will be dropped at the players location.
+CanAcceptOverloadTrade: true

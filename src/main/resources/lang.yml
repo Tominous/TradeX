@@ -1,0 +1,37 @@
+REQUEST_SEND: "&e&l[&5&lTradeX&e&l] &aYou've send a trade request to {PLAYER}."
+REQUEST_SEND_ERROR: "&e&l[&5&lTradeX&e&l] &cSomething went wrong while sending the request. ({ERROR}&c)"
+
+REQUEST_RECEIVED: "&e&l[&5&lTradeX&e&l] &aYou've received a trade request from {PLAYER}&a."
+
+REQUEST_ACCEPT: "&e&l[&5&lTradeX&e&l] &aYou've accepted a trade request from {PLAYER}&a."
+REQUEST_ACCEPTED: "&e&l[&5&lTradeX&e&l] &a{PLAYER}&a has accepted your request."
+REQUEST_ACCEPT_ERROR: "&e&l[&5&lTradeX&e&l] &cSomething went wrong while accepting the request. ({ERROR}&c)"
+
+REQUEST_DENY: "&e&l[&5&lTradeX&e&l] &aTrade request of player {PLAYER}&a denied."
+REQUEST_DENIED: "&e&l[&5&lTradeX&e&l] &c{PLAYER}&c denied your trade request."
+REQUEST_DENY_ERROR: "&e&l[&5&lTradeX&e&l] &cSomething went wrong while denying the request. ({ERROR}&c)"
+
+REQUEST_CANCELED: "&e&l[&5&lTradeX&e&l] &aTrade request canceled."
+
+REQUEST_TIMED_OUT: "&e&l[&5&lTradeX&e&l] &cTrade request timed-out."
+
+
+TRADE_CANCELED: "&e&l[&5&lTradeX&e&l] &cTrade canceled."
+TRADE_COMPLETED: "&e&l[&5&lTradeX&e&l] &aTrade completed."
+
+
+UI_TITLE: "&6&lTrade with {PLAYER}"
+UI_ACCEPT: "&3&lClick here to accept the trade."
+UI_ACCEPT_ERROR: "&c&lCannot accept ({ERROR}&c)"
+UI_WAITING: "&2&lTrade accepted. Waiting for the other player..."
+
+UI_SHULKER_TITLE: "Shulker Box"
+UI_SHULKER_EXIT: "&c&lBack to trade"
+
+UI_ACCEPTED: "&2&lThe other player has accepted the trade."
+UI_OTHER_WAITING: "&3&lWaiting for other the player..."
+
+ERROR_MESSAGE: "&e&l[&5&lTradeX&e&l] &cWoops, something has gone wrong. ({ERROR})"
+ERROR_NO_REQUEST_FOUND: "&7No request found"
+ERROR_PLAYER_OUT_OF_RANGE: "&7Player exceeds maximum range of {RANGE_INT} blocks."
+ERROR_INVENTORY_OVERLOAD: "&7Items can not fit in inventory"

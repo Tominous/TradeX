@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TradeX">
+    <output-path>$PROJECT_DIR$/../../00_Plugin_Making/03_Test_Servers/1.13.2/plugins</output-path>
+    <root id="archive" name="TradeX.jar">
+      <element id="module-output" name="TradeX" />
+    </root>
+  </artifact>
+</component>

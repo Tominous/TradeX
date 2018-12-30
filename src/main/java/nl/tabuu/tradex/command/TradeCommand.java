@@ -11,8 +11,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
+import java.util.Optional;
 
-public class TradeCommand extends CCommand {
+public class TradeCommand extends Command {
 
     private TradeManager _tradeManager;
     private Dictionary _local;
@@ -29,19 +30,23 @@ public class TradeCommand extends CCommand {
         _outOfRangeError = _local.translate("ERROR_PLAYER_OUT_OF_RANGE", "{RANGE_INT}", (int)_config.getDouble("MaximumTradeDistance") + "");
         _maximumTradeRange = _config.getDouble("MaximumTradeDistance");
 
-        addArgument(CommandArgumentType.PLAYER, true);
-        setRequiredCommandSenderType(CommandSenderType.PLAYER);
+        setArgumentConverter(new OrderedArgumentConverter().setSequence(ArgumentType.PLAYER));
+        setRequiredSenderType(SenderType.PLAYER);
 
         addSubCommand("accept", new TradeRequestAcceptCommand(this));
         addSubCommand("deny", new TradeRequestDenyCommand(this));
         addSubCommand("cancel", new TradeRequestCancelCommand(this));
     }
 
-    public CommandResult onCommand(CommandSender commandSender, List<CommandArgument<?>> list) {
-        Player receiver = list.get(0).getValue();
-        Player sender = (Player) commandSender;
-        if(!sender.getUniqueId().equals(receiver.getUniqueId())) {
+    @Override
+    protected CommandResult onCommand(CommandSender commandSender, List<Optional<?>> list) {
+        if(!list.get(0).isPresent())
+            return CommandResult.WRONG_SYNTAX;
 
+        Player receiver = (Player) list.get(0).get();
+        Player sender = (Player) commandSender;
+
+        if(!sender.getUniqueId().equals(receiver.getUniqueId())) {
             if(_maximumTradeRange < 0 || (sender.getLocation().distance(receiver.getLocation()) <= _config.getDouble("MaximumTradeDistance")
                     && sender.getWorld().equals(receiver.getWorld()))){
 
@@ -60,11 +65,11 @@ public class TradeCommand extends CCommand {
         return CommandResult.SUCCESS;
     }
 
-    public abstract class TradeRequestInteractionCommand extends CCommand{
+    abstract class TradeRequestInteractionCommand extends Command{
 
         protected String _notFoundError;
 
-        public TradeRequestInteractionCommand(String commandName, CCommand parentCommand) {
+        public TradeRequestInteractionCommand(String commandName, Command parentCommand) {
             super(commandName, parentCommand);
             _notFoundError = _local.translate("ERROR_NO_REQUEST_FOUND");
         }
@@ -76,19 +81,19 @@ public class TradeCommand extends CCommand {
 
     public abstract class TradeRequestReceivedInteractionCommand extends TradeRequestInteractionCommand{
 
-        private TradeRequestReceivedInteractionCommand(String commandName, CCommand parentCommand) {
+        private TradeRequestReceivedInteractionCommand(String commandName, Command parentCommand) {
             super(commandName, parentCommand);
 
-            addArgument(CommandArgumentType.PLAYER, false);
-            setRequiredCommandSenderType(CommandSenderType.PLAYER);
+            setArgumentConverter(new OrderedArgumentConverter().setSequence(ArgumentType.PLAYER));
+            setRequiredSenderType(SenderType.PLAYER);
         }
 
         @Override
-        public CommandResult onCommand(CommandSender commandSender, List<CommandArgument<?>> list) {
-            Player sender = list.get(0).getValue();
+        protected CommandResult onCommand(CommandSender commandSender, List<Optional<?>> list) {
+            Optional<Player> sender = (Optional<Player>) list.get(0);
             Player receiver = (Player) commandSender;
 
-            TradeRequest request = sender == null ? _tradeManager.getLastReceivedRequest(receiver) : _tradeManager.getSendRequest(sender);
+            TradeRequest request = sender.isPresent() ? _tradeManager.getSendRequest(sender.get()) : _tradeManager.getLastReceivedRequest(receiver);
 
             if(request != null){
                 if(_maximumTradeRange < 0 || (receiver.getLocation().distance(request.getSender().getLocation()) > _config.getDouble("MaximumTradeDistance")
@@ -108,14 +113,14 @@ public class TradeCommand extends CCommand {
 
     public abstract class TradeRequestSendInteractionCommand extends TradeRequestInteractionCommand{
 
-        private TradeRequestSendInteractionCommand(String commandName, CCommand parentCommand) {
+        private TradeRequestSendInteractionCommand(String commandName, Command parentCommand) {
             super(commandName, parentCommand);
 
-            setRequiredCommandSenderType(CommandSenderType.PLAYER);
+            setRequiredSenderType(SenderType.PLAYER);
         }
 
         @Override
-        public CommandResult onCommand(CommandSender commandSender, List<CommandArgument<?>> list) {
+        protected CommandResult onCommand(CommandSender commandSender, List<Optional<?>> list) {
             Player sender = (Player) commandSender;
 
             TradeRequest request = _tradeManager.getSendRequest(sender);
@@ -131,7 +136,7 @@ public class TradeCommand extends CCommand {
 
     public class TradeRequestAcceptCommand extends TradeRequestReceivedInteractionCommand {
 
-        private TradeRequestAcceptCommand(CCommand parentCommand) {
+        private TradeRequestAcceptCommand(Command parentCommand) {
             super("trade accept", parentCommand);
         }
 
@@ -153,7 +158,7 @@ public class TradeCommand extends CCommand {
 
     public class TradeRequestDenyCommand extends TradeRequestReceivedInteractionCommand {
 
-        private TradeRequestDenyCommand(CCommand parentCommand) {
+        private TradeRequestDenyCommand(Command parentCommand) {
             super("trade deny", parentCommand);
         }
 
@@ -175,7 +180,7 @@ public class TradeCommand extends CCommand {
 
     public class TradeRequestCancelCommand extends TradeRequestSendInteractionCommand {
 
-        private TradeRequestCancelCommand(CCommand parentCommand) {
+        private TradeRequestCancelCommand(Command parentCommand) {
             super("trade cancel", parentCommand);
         }
 

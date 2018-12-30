@@ -22,7 +22,7 @@ public class TradeManager {
     private List<Trade> _trades;
     private IConfiguration _config;
 
-    public TradeManager(){
+    private TradeManager(){
         _tradeRequests = new LinkedHashMap<>();
         _trades = new ArrayList<>();
 

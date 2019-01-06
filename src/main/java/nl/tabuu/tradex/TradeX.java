@@ -3,6 +3,8 @@ package nl.tabuu.tradex;
 import nl.tabuu.tabuucore.plugin.TabuuCorePlugin;
 import nl.tabuu.tradex.command.TradeCommand;
 import nl.tabuu.tradex.listener.PlayerListener;
+import nl.tabuu.tradex.trade.Trade;
+import nl.tabuu.tradex.trade.TradeManager;
 import org.bukkit.Bukkit;
 
 import java.util.Iterator;

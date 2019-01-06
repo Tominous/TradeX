@@ -1,7 +1,7 @@
 package nl.tabuu.tradex.listener;
 
-import nl.tabuu.tradex.TradeManager;
-import nl.tabuu.tradex.TradeRequest;
+import nl.tabuu.tradex.trade.TradeManager;
+import nl.tabuu.tradex.trade.TradeRequest;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;

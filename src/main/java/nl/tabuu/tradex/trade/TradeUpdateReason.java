@@ -1,4 +1,4 @@
-package nl.tabuu.tradex;
+package nl.tabuu.tradex.trade;
 
 public enum TradeUpdateReason {
     OFFER_CHANGED,

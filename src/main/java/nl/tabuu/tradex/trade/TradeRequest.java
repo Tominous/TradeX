@@ -1,6 +1,7 @@
-package nl.tabuu.tradex;
+package nl.tabuu.tradex.trade;
 
 import nl.tabuu.tabuucore.util.Dictionary;
+import nl.tabuu.tradex.TradeX;
 import nl.tabuu.tradex.ui.TradeUI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package nl.tabuu.tradex;
+package nl.tabuu.tradex.trade;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

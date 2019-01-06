@@ -4,7 +4,6 @@ import nl.tabuu.tabuucore.configuration.IConfiguration;
 import nl.tabuu.tabuucore.inventory.InventorySize;
 import nl.tabuu.tabuucore.inventory.ui.InventoryFormUI;
 import nl.tabuu.tabuucore.inventory.ui.InventoryUIClick;
-import nl.tabuu.tabuucore.inventory.ui.InventoryUIDrag;
 import nl.tabuu.tabuucore.inventory.ui.element.Checkbox;
 import nl.tabuu.tabuucore.inventory.ui.element.Element;
 import nl.tabuu.tabuucore.inventory.ui.element.ElementGroup;
@@ -17,10 +16,10 @@ import nl.tabuu.tabuucore.inventory.ui.graphics.brush.IBrush;
 import nl.tabuu.tabuucore.util.Dictionary;
 import nl.tabuu.tabuucore.util.ItemBuilder;
 import nl.tabuu.tabuucore.util.vector.Vector2f;
-import nl.tabuu.tradex.Trade;
-import nl.tabuu.tradex.TradeUpdateReason;
+import nl.tabuu.tradex.trade.Trade;
+import nl.tabuu.tradex.trade.TradeUpdateReason;
 import nl.tabuu.tradex.TradeX;
-import nl.tabuu.tradex.Trader;
+import nl.tabuu.tradex.trade.Trader;
 import org.bukkit.*;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.entity.Player;
@@ -72,7 +71,6 @@ public class TradeUI extends InventoryFormUI {
 
     @Override
     protected void draw() {
-
         //region Items, styles, brushes
         ItemBuilder
                 green = new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE).setDisplayName(" "),

@@ -6,6 +6,7 @@ author: Tabuu
 authors: [Tabuu]
 website: https://www.tabuu.nl
 depend: [TabuuCore]
+softdepend: [TempStorageZ]
 api-version: 1.13
 
 commands:

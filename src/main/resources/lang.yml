@@ -35,3 +35,5 @@ ERROR_MESSAGE: "&e&l[&5&lTradeX&e&l] &cWoops, something has gone wrong. ({ERROR}
 ERROR_NO_REQUEST_FOUND: "&7No request found"
 ERROR_PLAYER_OUT_OF_RANGE: "&7Player exceeds maximum range of {RANGE_INT} blocks."
 ERROR_INVENTORY_OVERLOAD: "&7Items can not fit in inventory"
+
+TEMPSTORAGEZ_DESCRIPTION: "Item from trade with {PLAYER}"

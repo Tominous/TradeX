@@ -3,6 +3,8 @@ package nl.tabuu.tradex.trade;
 import nl.tabuu.tabuucore.configuration.IConfiguration;
 import nl.tabuu.tabuucore.util.Dictionary;
 import nl.tabuu.tabuucore.util.ItemList;
+import nl.tabuu.tempstoragez.api.TempStorageAPI;
+import nl.tabuu.tempstoragez.api.storage.IStorage;
 import nl.tabuu.tradex.TradeX;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -98,9 +100,20 @@ public class Trade {
         ItemList compressed = new ItemList();
         compressed.stackAll(items);
 
-        player.getInventory().addItem(compressed.stream().toArray(ItemStack[]::new)).values().forEach(item ->
-                player.getWorld().dropItemNaturally(player.getLocation(), item)
-        );
+        Collection<ItemStack> nonFittingItems = player.getInventory().addItem(compressed.stream().toArray(ItemStack[]::new)).values();
+
+        if(TradeX.getInstance().useTempStorageZ()){
+            Trader other = getTraders().stream().filter(t -> !t.equals(trader)).findFirst().orElse(trader);
+            String description = _local.translate("TEMPSTORAGEZ_DESCRIPTION", "{PLAYER}", other.getPlayer().getDisplayName());
+            long time = _config.getTime("TempStorageZTime");
+
+            TempStorageAPI api = TempStorageAPI.getInstance();
+            IStorage storage = api.getStorage(player);
+
+            nonFittingItems.forEach(item -> storage.addItem(item, time, description));
+        }
+        else
+            nonFittingItems.forEach(item -> player.getWorld().dropItemNaturally(player.getLocation(), item));
     }
 
     private void timerTick(){

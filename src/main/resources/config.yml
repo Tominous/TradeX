@@ -11,5 +11,14 @@ MaximumTradeDistance: 5.3
 
 # DESCRIPTION:  If set to false a player cannot accept a trade that would not fit in their inventory.
 # FORMAT:       Boolean.
-# NOTE:         When set to true the non fitting items will be dropped at the players location.
+# NOTE:         When set to true the non fitting items will be dropped at the players location or stored in the TempStorage of the player.
 CanAcceptOverloadTrade: true
+
+# DESCRIPTION:  If set to true and CanAcceptOverloadTrade is set to true; items will be stored in the player's TempStorage.
+# FORMAT:       Boolean.
+UseTempStorageZ: true
+
+# DESCRIPTION:  If set to true and CanAcceptOverloadTrade is set to true; items will be stored in the player's TempStorage.
+# FORMAT:       TabuuCore time format.
+# NOTE:         Enter a value of 0 (e.g. '0s', '0m', '0h', etc) for the default TempStorageZ value.
+TempStorageZTime: "1h 15s"

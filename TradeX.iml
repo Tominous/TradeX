@@ -25,7 +25,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../00_Plugin_Making/01_APIs/TabuuCore/TabuuCore-2019.1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../00_Plugin_Making/01_APIs/TempStorageZ-1.1BETA.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -34,7 +34,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../00_Plugin_Making/01_APIs/TempStorageZ-1.1BETA.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../00_Plugin_Making/01_APIs/TabuuCore/TabuuCore-Build.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

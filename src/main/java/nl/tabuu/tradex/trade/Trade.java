@@ -1,8 +1,8 @@
 package nl.tabuu.tradex.trade;
 
 import nl.tabuu.tabuucore.configuration.IConfiguration;
+import nl.tabuu.tabuucore.item.ItemList;
 import nl.tabuu.tabuucore.util.Dictionary;
-import nl.tabuu.tabuucore.util.ItemList;
 import nl.tabuu.tempstoragez.api.TempStorageAPI;
 import nl.tabuu.tempstoragez.api.storage.IStorage;
 import nl.tabuu.tradex.TradeX;

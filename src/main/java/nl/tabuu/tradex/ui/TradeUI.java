@@ -13,8 +13,8 @@ import nl.tabuu.tabuucore.inventory.ui.element.style.ToggleableStyle;
 import nl.tabuu.tabuucore.inventory.ui.graphics.InventoryCanvas;
 import nl.tabuu.tabuucore.inventory.ui.graphics.brush.Brush;
 import nl.tabuu.tabuucore.inventory.ui.graphics.brush.IBrush;
+import nl.tabuu.tabuucore.item.ItemBuilder;
 import nl.tabuu.tabuucore.util.Dictionary;
-import nl.tabuu.tabuucore.util.ItemBuilder;
 import nl.tabuu.tabuucore.util.vector.Vector2f;
 import nl.tabuu.tradex.trade.Trade;
 import nl.tabuu.tradex.trade.TradeUpdateReason;
@@ -147,7 +147,7 @@ public class TradeUI extends InventoryFormUI {
     public void onClickUI(Player player, InventoryUIClick click) {
         super.onClickUI(player, click);
 
-        Vector2f clickedPosition = InventoryCanvas.vectorToSlot(click.getSlot());
+        Vector2f clickedPosition = InventoryCanvas.slotToVector(click.getSlot());
 
         Vector2f boxStart = new Vector2f(5, 0);
         Vector2f boxStop = new Vector2f(9, 5);
